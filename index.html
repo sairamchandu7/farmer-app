@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kissan Farmer Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="login-page">
+  <div class="login-card">
+    <img src="kissan_logo.png" alt="Logo" class="logo-small">
+    <h2>Welcome Kissan Farmer</h2>
+
+    <!-- Language selection -->
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="te">Telugu</option>
+      <option value="ur">Urdu</option>
+    </select>
+
+    <!-- Login fields -->
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button id="loginBtn" type="button">Login</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+document.getElementById("loginBtn").addEventListener("click", function() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if(username.trim() === "" || password.trim() === "") {
+        alert("Please enter username and password");
+        return;
+    }
+
+    // Save selected language
+    localStorage.setItem("lang", document.getElementById("language").value);
+
+    // Redirect to main page
+    window.location.href = "main.html";
+});
+</script>
+</body>
+</html>

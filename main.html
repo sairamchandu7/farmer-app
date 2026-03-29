@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kissan Farmer Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="main-page">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <img src="kissan_logo.png" alt="Logo" class="logo-small">
+    <select id="mainLanguage">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="te">Telugu</option>
+      <option value="ur">Urdu</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <button type="button" onclick="showSection('subsidy')">Subsidy List</button>
+      <button type="button" onclick="showSection('soil')">Soil Analysis</button>
+      <button type="button" onclick="showSection('motor')">Motor Control</button>
+      <button type="button" onclick="showSection('chat')">AI Chat Bot</button>
+      <button type="button" onclick="showSection('pest')">Pest Alerts</button>
+      <button type="button" onclick="showSection('market')">Market Forecast</button>
+      <button type="button" onclick="showSection('weather')">Weather Alerts</button>
+      <button type="button" onclick="showSection('community')">Community</button>
+      <button type="button" onclick="showSection('dashboard')">Dashboard</button>
+      <button type="button" onclick="showSection('about')">About</button>
+    </div>
+
+
+    <div class="content">
+<div id="subsidy" class="section">
+  <h3>Farmer Subsidy Schemes</h3>
+  <ol>
+    <li>
+      <a href="https://pmkisan.gov.in/" target="_blank">Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)</a><br>
+      Provides ₹6,000 per year in three equal installments directly to farmers' bank accounts.
+    </li>
+    <li>
+      <a href="https://soilhealth.dac.gov.in/" target="_blank">Soil Health Card Scheme</a><br>
+      Helps farmers check soil quality and nutrient levels for better crop productivity.
+    </li>
+    <li>
+      <a href="https://pmfby.gov.in/" target="_blank">Crop Insurance Scheme (PMFBY)</a><br>
+      Protects farmers against crop losses due to natural calamities, pests, and diseases.
+    </li>
+    <li>
+      <a href="https://agricoop.nic.in/en/divisiontype/rainfed-farming-system/sub-mission-agricultural-mechanization" target="_blank">
+        Sub-Mission on Agricultural Mechanization
+      </a><br>
+      Provides subsidies for farm machinery and tools to reduce labor costs.
+    </li>
+    <li>
+      <a href="https://rkvy.nic.in/" target="_blank">Rashtriya Krishi Vikas Yojana (RKVY)</a><br>
+      Supports states in strengthening agriculture and allied sectors through projects.
+    </li>
+    <li>
+      <a href="https://pgsindia-ncof.gov.in/" target="_blank">Paramparagat Krishi Vikas Yojana (PKVY)</a><br>
+      Promotes organic farming with financial support for organic inputs and certification.
+    </li>
+    <li>
+      <a href="https://nfsm.gov.in/" target="_blank">National Food Security Mission (NFSM)</a><br>
+      Aims to increase production of rice, wheat, pulses, and coarse cereals sustainably.
+    </li>
+    <li>
+      <a href="https://pmfby.gov.in/" target="_blank">Pradhan Mantri Fasal Bima Yojana</a><br>
+      Crop insurance with low premiums and faster claim settlements for farmers.
+    </li>
+    <li>
+      <a href="https://pmksy.gov.in/" target="_blank">Micro Irrigation Scheme</a><br>
+      Encourages farmers to adopt drip and sprinkler irrigation systems with subsidies.
+    </li>
+    <li>
+      <a href="https://pmksy.gov.in/" target="_blank">Pradhan Mantri Krishi Sinchai Yojana (PMKSY)</a><br>
+      “Har Khet Ko Pani” – aims to provide water to every farm and improve irrigation efficiency.
+    </li>
+    <li>
+      <a href="https://www.nabard.org/" target="_blank">Interest Subsidy Scheme</a><br>
+      Provides interest subsidy on crop loans to reduce the financial burden on farmers.
+    </li>
+    <li>
+      <a href="https://www.myscheme.gov.in/schemes/kccs" target="_blank">Kisan Credit Card Scheme (KCC)</a><br>
+      Offers easy credit to farmers for crop cultivation and other farming needs.
+    </li>
+    <li>
+      <a href="https://nhb.gov.in/" target="_blank">National Horticulture Mission</a><br>
+      Supports farmers in horticulture crops like fruits, vegetables, flowers, and spices.
+    </li>
+    <li>
+      <a href="https://agricoop.nic.in/" target="_blank">Soil & Water Conservation Scheme</a><br>
+      Focuses on sustainable farming through watershed management and conservation.
+    </li>
+    <li>
+      <a href="https://pgsindia-ncof.gov.in/" target="_blank">Organic Farming Promotion</a><br>
+      Encourages chemical-free farming by supporting bio-fertilizers and compost.
+    </li>
+  </ol>
+</div>
+
+
+      <!-- Soil Analysis -->
+      <div id="soil" class="section" style="display:none;">
+        <h3>Upload Soil Details</h3>
+        <input type="file" id="soilFile">
+        <button onclick="analyzeSoil()">Analyze</button>
+        <div id="fertilizerResult"></div>
+      </div>
+
+      <!-- Motor Control -->
+      <div id="motor" class="section" style="display:none;">
+  <h3>Motor Control 💧</h3>
+  
+  <p>
+    The Motor Control feature allows farmers to remotely operate their irrigation pumps.
+    This helps in saving time, labor, and water. You can turn the motor ON or OFF 
+    directly from this portal, ensuring crops get adequate water without manual intervention.
+  </p>
+
+  <ul>
+    <li><strong>Turn ON:</strong> Start your irrigation system remotely.</li>
+    <li><strong>Turn OFF:</strong> Stop the pump after watering to save electricity and water.</li>
+    <li><strong>Smart Usage:</strong> Combine with soil moisture sensors or weather alerts to irrigate only when necessary.</li>
+  </ul>
+
+  <p><em>Tip:</em> Consistent irrigation improves crop yield, reduces water wastage, and lowers electricity costs.</p>
+
+  <button onclick="toggleMotor(true)">Turn ON</button>
+  <button onclick="toggleMotor(false)">Turn OFF</button>
+
+  <p id="motorStatus">Motor is OFF ❌</p>
+</div>
+
+
+      <!-- AI Chat Bot -->
+      <div id="chat" class="section" style="display:none;">
+        <h3>AI Chat Bot</h3>
+        <div class="chat-window" id="chatWindow"></div>
+        <input type="text" id="chatInput" placeholder="Type message...">
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="startVoice()">🎤</button>
+      </div>
+
+      <!-- Pest Alerts -->
+      <!-- Pest Alerts Section -->
+<div id="pest" class="section" style="display:none;">
+  <h3>🐛 Pest Alerts</h3>
+  <ul id="pestList" style="background:#fff8dc; padding:10px; border-radius:8px; max-height:250px; overflow-y:auto;"></ul>
+  <button onclick="loadPestAlerts()">Refresh Alerts</button>
+</div>
+
+
+      <!-- Market Forecast -->
+<div id="market" class="section" style="display:none;">
+  <h3>📊 Market & Price Forecast</h3>
+  
+  <h4>Crop Price Trends</h4>
+  <table border="1" cellspacing="0" cellpadding="8">
+    <tr>
+      <th>Crop</th>
+      <th>Current Price (₹/quintal)</th>
+      <th>Expected Price Next Month (₹/quintal)</th>
+      <th>Forecast</th>
+    </tr>
+    <tr>
+      <td>Wheat</td>
+      <td>2,150</td>
+      <td>2,250</td>
+      <td>⬆ Rising</td>
+    </tr>
+    <tr>
+      <td>Rice</td>
+      <td>3,000</td>
+      <td>2,950</td>
+      <td>⬇ Slight Drop</td>
+    </tr>
+    <tr>
+      <td>Cotton</td>
+      <td>6,500</td>
+      <td>6,800</td>
+      <td>⬆ Rising</td>
+    </tr>
+    <tr>
+      <td>Maize</td>
+      <td>1,800</td>
+      <td>1,750</td>
+      <td>⬇ Decreasing</td>
+    </tr>
+  </table>
+
+  <h4>📍 Market Updates</h4>
+  <ul>
+    <li>Demand for <b>cotton</b> is expected to rise due to export orders.</li>
+    <li><b>Rice</b> prices may slightly decline due to higher yield this season.</li>
+    <li><b>Wheat</b> demand is strong in northern states, boosting prices.</li>
+    <li><b>Maize</b> prices may drop due to surplus supply.</li>
+  </ul>
+</div>
+
+
+      <!-- Weather Alerts -->
+      <div id="weather" class="section" style="display:none;">
+  <h3>🌦 Live Weather Updates</h3>
+  <button onclick="getWeatherByLocation()">📍 Use My Location</button>
+  <br><br>
+  <input type="text" id="cityInput" placeholder="Or enter city name">
+  <button onclick="getWeather()">Get Weather</button>
+  <div id="weatherResult"></div>
+</div>
+
+
+
+   
+      <!-- 🌾 Community -->
+<div id="community" class="section" style="display:none;">
+  <h3>👨‍🌾 Farmers' Community Chat</h3>
+
+  <!-- Chat Window -->
+  <div id="communityWindow" style="border:1px solid #ccc; padding:10px; height:250px; overflow-y:auto; background:#f9f9f9; border-radius:8px;">
+    <p><strong>Ravi (Andhra):</strong> 🌾 I planted paddy last week. Any suggestions for fertilizers?</p>
+    <p><strong>Meena (Telangana):</strong> 💧 Use urea in small doses and don’t forget micro-nutrients.</p>
+    <p><strong>Arjun (Maharashtra):</strong> 🚜 Cotton price is expected to rise by ₹300 next month!</p>
+    <p><strong>Saira (UP):</strong> 🐛 Anyone else facing whitefly issues in sugarcane?</p>
+    <p><strong>Kiran (Karnataka):</strong> ✅ Yes! Neem oil spray works well for whiteflies.</p>
+  </div>
+
+  <!-- Input Box -->
+  <div style="margin-top:10px;">
+    <input type="text" id="communityInput" placeholder="Type your message..." style="width:70%; padding:5px;">
+    <button onclick="sendCommunityMessage()">Send</button>
+  </div>
+</div>
+
+
+  <script>
+    // 🔹 Replace this with your Firebase project config
+    var firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    var db = firebase.database().ref("messages");
+
+    function sendMessage() {
+      let user = document.getElementById("username").value;
+      let msg = document.getElementById("message").value;
+
+      if(user && msg) {
+        db.push({ name: user, text: msg });
+        document.getElementById("message").value = "";
+      }
+    }
+
+    db.on("child_added", function(snapshot) {
+      let data = snapshot.val();
+      let msg = document.createElement("div");
+      msg.className = "msg";
+      msg.innerHTML = `<strong>${data.name}:</strong> ${data.text}`;
+      document.getElementById("chat-box").appendChild(msg);
+      document.getElementById("chat-box").scrollTop = document.getElementById("chat-box").scrollHeight;
+    });
+  </script>
+
+</body>
+</html>
+
+      <!-- Dashboard -->
+<div id="dashboard" class="section" style="display:none;">
+  <h2>📊 Interactive Farmer Dashboard</h2>
+  <p>
+    The dashboard provides **real-time insights** into farming activities. It helps farmers 
+    analyze their crop production, irrigation efficiency, fertilizer usage, and profit/loss 
+    forecasts. By visualizing this data, farmers can make **smarter decisions** that increase 
+    yield and reduce costs.  
+  </p>
+
+  <h3>Crop Production Analysis</h3>
+  <canvas id="cropChart" height="200"></canvas>
+
+  <h3>Irrigation Efficiency</h3>
+  <canvas id="irrigationChart" height="200"></canvas>
+
+  <h3>Fertilizer Usage Trends</h3>
+  <canvas id="fertilizerChart" height="200"></canvas>
+
+  <h3>Profit / Loss Forecast</h3>
+  <canvas id="profitChart" height="200"></canvas>
+</div>
+
+      
+
+      <!-- About -->
+      <div id="about" class="section" style="display:none;">
+        <h3>About Kissan Farmer Portal</h3>
+        <p>This platform helps farmers manage crops, get subsidies, control irrigation, track pests, and consult AI assistance. Earn badges by completing tasks!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+const lang = localStorage.getItem("lang");
+if(lang) document.getElementById("mainLanguage").value = lang;
+</script>
+</body>
+</html>
